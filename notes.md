@@ -6,3 +6,14 @@ Same    09:00 - scripts section node index.js
         10:30 - gitignore
 
 steps for first time  deployment vid 13 @0:44 
+
+Vid 14
+String Ids name of app to heroku
+  Link to visit app
+    https://vast-hamlet-90193.herokuapp.com/ 
+|
+Deployment target - git repo to push local server to
+    https://git.heroku.com/vast-hamlet-90193.git
+
+    ___Deploy app with git 02:30
+        Add a remote repo to the current repo

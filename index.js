@@ -4,7 +4,7 @@ const app = express();
 
 //vid 10 01:01
 app.get('/', (req, res) => {
-    res.send({ hi: 'there' });
+    res.send({ test: 'changes' });
 });
 
 const PORT = process.env.PORT || 5000 //V12 04:45
