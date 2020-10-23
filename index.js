@@ -1,12 +1,22 @@
 //In node projects, file called index.js by convention
 const express = require('express');
+require('./services/passport');
+// const authRoutes = require('.routes/authRoutes'); refactor v30
+
+
 const app = express();
 
-//vid 10 01:01
-app.get('/', (req, res) => {
-    res.send({ test: 'changes' });
-});
+//we need to use express in order to use routes v30
+  //authRoutes becomes a function that takes in app as an Arg
+    //the module.exports makes this possible v30
+// authRoutes(app); ref v30
+require('./routes/authRoutes')(app);
+  //require stmt above returns a function (authRoutes.js) v30
 
 const PORT = process.env.PORT || 5000 //V12 04:45
 //vid 10 06:44
 app.listen(PORT);
+
+
+
+//ref === refactor
