@@ -1,8 +1,12 @@
 //In node projects, file called index.js by convention
 const express = require('express');
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
+
 require('./services/passport');
 // const authRoutes = require('.routes/authRoutes'); refactor v30
 
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 

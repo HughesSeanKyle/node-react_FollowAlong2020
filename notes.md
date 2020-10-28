@@ -43,7 +43,6 @@ const keys = require('./config/keys'); file: passport.js
 ('./config/keys') - Looks in the same directory as the current file (passport.js) to correct add one more "." in front of /config ('../config/keys'). says go up one more directory then find config folder.
 
 
-FOR NEXT SESSION!!!!! 23/10/2020
-
-Start pushing code to gitHub
-    CREATE A REPO
+Vid 31 23/10/2020
+    Http is stateless.
+    Cookie-based authentication
