@@ -3,8 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
+  // const authRoutes = require('.routes/authRoutes'); refactor v30
 require('./services/passport');
-// const authRoutes = require('.routes/authRoutes'); refactor v30
+require('./models/User');
 
 mongoose.connect(keys.mongoURI);
 
