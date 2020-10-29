@@ -7,9 +7,17 @@ const keys = require('./config/keys');
 require('./services/passport');
 require('./models/User');
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+  });
+
 
 const app = express();
+
+app.get('/', (req, res) => {
+  res.send("Welcome to home page!")
+})
 
 //we need to use express in order to use routes v30
   //authRoutes becomes a function that takes in app as an Arg

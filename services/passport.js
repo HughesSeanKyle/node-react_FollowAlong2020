@@ -9,10 +9,8 @@ passport.use(
       clientID: keys.googleClientID,          //Arg1:Obj
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback'
-    }, (accessToken, refreshToken, profile, done) => {//Arg2:Callback function
-        console.log('access token', accessToken);
-        console.log('refresh token', refreshToken);
-        console.log('profile:', profile);
+    }, (accessToken, refreshToken, profile, done) => {//
+      
       }
     )
   );
