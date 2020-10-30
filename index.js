@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
   // const authRoutes = require('.routes/authRoutes'); refactor v30
-require('./services/passport');
 require('./models/User');
+require('./services/passport');
+
 
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
