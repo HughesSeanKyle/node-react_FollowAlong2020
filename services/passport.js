@@ -15,16 +15,17 @@ passport.use(
       callbackURL: '/auth/google/callback'
     }, (accessToken, refreshToken, profile, done) => {
           //find googleiD in DB equal to profile id from google during auth
-          User.findOne({ googleId: profile.id })
-          .then((existingUser) => {
+          User.findOne({ googleId: profile.id }).then((existingUser) => {
             if (existingUser) {
               //We already have a record with the given profile ID
+              done(null, existingUser);
             } else {
               //We don't have a user record with this ID, make new record
-              new User({ googleId: profile.id }).save() //Create new instance of user and save to MongoDb
+              new User({ googleId: profile.id }) //Creates new model instance
+              .save() //Create new instance of user and save to MongoDb
+              .then(user => done(null, user));
             }
           }) 
-
       }
     )
   );
