@@ -29,7 +29,7 @@ require('./routes/authRoutes')(app);
 
 const PORT = process.env.PORT || 5000 //V12 04:45
 //vid 10 06:44
-app.listen(PORT);
+app.listen(PORT, () => console.log('Connected to Server...'))
 
 
 

@@ -14,11 +14,23 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback'
     }, (accessToken, refreshToken, profile, done) => {
-          new User({ googleId: profile.id }).save() //Create new instance of user and save to MongoDb
+          //find googleiD in DB equal to profile id from google during auth
+          User.findOne({ googleId: profile.id })
+          .then((existingUser) => {
+            if (existingUser) {
+              //We already have a record with the given profile ID
+            } else {
+              //We don't have a user record with this ID, make new record
+              new User({ googleId: profile.id }).save() //Create new instance of user and save to MongoDb
+            }
+          }) 
+
       }
     )
   );
 
 //vid 30 not exporting any code from here
       //just want to make sure code is being used - see require stmt in index.js
+
+//V41 - Anytime db is queried an asynchronous action is initiated.
 
