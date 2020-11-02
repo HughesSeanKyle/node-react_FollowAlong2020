@@ -1,6 +1,8 @@
 //In node projects, file called index.js by convention
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 const keys = require('./config/keys');
 
   // const authRoutes = require('.routes/authRoutes'); refactor v30
@@ -15,6 +17,17 @@ mongoose.connect(keys.mongoURI, {
 
 
 const app = express();
+
+//maxAge - How long cookie can exist in browser in ms not s
+//keys - Used to encrypt cookie
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', (req, res) => {
   res.send("Welcome to home page!")
