@@ -8,6 +8,10 @@ const keys = require('../config/keys');
   //One arg = fetch model, Two args = load model in (e.g userSchema).
 const User = mongoose.model('users'); // <=== User = Model Class
 
+passport.serializeUser((user, done) => {
+  done(null, user.id); //not profile id but id created by mongo
+});
+
 passport.use(
     new GoogleStrategy({
       clientID: keys.googleClientID,          //Arg1:Obj
