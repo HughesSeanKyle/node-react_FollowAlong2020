@@ -46,3 +46,10 @@ const keys = require('./config/keys'); file: passport.js
 Vid 31 23/10/2020
     Http is stateless.
     Cookie-based authentication
+
+Vid48 11/03/2020
+app.use - wiring up middlewares - each of them @1:00
+
+middleware are small functions that can be used to modify incoming requests to our app before they are
+
+sent off to route handlers. @1:07
