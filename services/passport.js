@@ -24,7 +24,8 @@ passport.use(
     new GoogleStrategy({
       clientID: keys.googleClientID,          //Arg1:Obj
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: '/auth/google/callback', 
+      proxy: true // Bypass the requirement for https
     }, (accessToken, refreshToken, profile, done) => {
           //find googleiD in DB equal to profile id from google during auth
           User.findOne({ googleId: profile.id }).then((existingUser) => {
