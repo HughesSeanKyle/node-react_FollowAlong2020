@@ -53,3 +53,11 @@ app.use - wiring up middlewares - each of them @1:00
 middleware are small functions that can be used to modify incoming requests to our app before they are
 
 sent off to route handlers. @1:07
+
+V62 27/11/2020
+What does a proxy do?
+Proxy servers act as a firewall and web filter, provide shared network connections, and cache data to speed up common requests. A good proxy server keeps users and the internal network protected from the bad stuff that lives out in the wild internet.
+[https://www.varonis.com/blog/what-is-a-proxy-server/]
+
+Linting is the automated checking of your source code for programmatic and stylistic errors. This is done by using a lint tool (otherwise known as linter). ... The term linting originally comes from a Unix utility for C. There are many code linters available for various programming languages today.
+[https://www.perforce.com/blog/qac/what-lint-code-and-why-linting-important#:~:text=Linting%20is%20the%20automated%20checking,(otherwise%20known%20as%20linter).&text=The%20term%20linting%20originally%20comes,for%20various%20programming%20languages%20today.]
