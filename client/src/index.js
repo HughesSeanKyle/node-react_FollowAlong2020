@@ -4,9 +4,10 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import App from './components/App';
+import reducers from './reducers';
 
 // Create new instance of redux store //1 
-const store = createStore(() => [], {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware());
 
 // Set up provider at top-level/parent component //2
     // This links redux to react.
@@ -14,6 +15,13 @@ ReactDOM.render(
     <Provider store={store}><App /></Provider>, 
     document.querySelector('#root')
 );
+
+
+
+
+
+
+
 
 /*
 A reducer is a function that determines changes to an application's state. It uses the action it receives to determine this change.
