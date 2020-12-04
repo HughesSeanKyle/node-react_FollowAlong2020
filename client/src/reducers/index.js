@@ -16,4 +16,6 @@ export default combineReducers({
 
 // note 1
 Whatever keys provided to this object will represent the keys that exists inside of state object. 
+
+This index.js also handles all of the redux setup.
 */  
