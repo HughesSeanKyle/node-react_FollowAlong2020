@@ -12,8 +12,10 @@ const App = () => { //2
         <div>
             <BrowserRouter>
                 <div>
+                    <Header />
                     <Route exact path="/" component={Landing} />
-                    <Route path="/surveys" component={Dashboard} />
+                    <Route exact path="/surveys" component={Dashboard} />
+                    <Route path="/surveys/new" component={SurveyNew} />
                 </div>
             </BrowserRouter>
         </div>
@@ -34,4 +36,6 @@ BrowserRouter must have atleast one child
 In Route component the "/" refers to the ROOT route. e.g emaily.com or in dev just localhost:3000
 
 ("exact={true}" === "exact") = Make sure that the path is exactly root || localhost:3000 if landing to be displayed. (Do NOT Greedily match.)
+
+The <Header /> will always be visible as it is not tied to any specific configuration. 
 */
