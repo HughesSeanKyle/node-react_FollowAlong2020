@@ -3,12 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
 
 // Create new instance of redux store //1 
-const store = createStore(reducers, {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 // Set up provider at top-level/parent component //2
     // This links redux to react.
@@ -48,4 +49,7 @@ When importing css it is important to add the css extension. When the extension 
 No need to provide relative path ('./') as webpack will automatically assume you are trying to import an npm module.
     When CSS is imported like this we do not need to assign it to a variable as it will not be used in this way. 
 
+
+Why does redux need thunk?
+Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.
 */
