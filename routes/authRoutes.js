@@ -18,6 +18,8 @@ module.exports = (app) => { //v30 - exporting func from this file
       //req.user will give blank screen - indicates user destroyed. 
   });
 
+
+  //2
   app.get('/api/current_user', (req, res) => {
       res.send(req.user);
   });
@@ -25,5 +27,7 @@ module.exports = (app) => { //v30 - exporting func from this file
 
 /*
 1. req.logout() is a function that is attached automatically to the request object by passport 
+
+//2 This route will decide if the user is logged in or not. 
 */
 
