@@ -1,11 +1,31 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
-module.exports = function (app) {
+module.exports = function (app) { // Side Note Below
     app.use(
-        ["/api", "/auth/google"],
-        createProxyMiddleware({
-            target: "http://localhost:5000",
-        })
-    );
+        createProxyMiddleware("/auth/google", 
+        { target: "http://localhost:5000/" })
+      );
+
+      app.use(
+        createProxyMiddleware("/api/*", 
+        { target: "http://localhost:5000/" })
+      );
+
+    /*
+    // app.use(
+    //     ["/api", "/auth/google"],
+    //     createProxyMiddleware({
+    //         target: "http://localhost:5000",
+    //     })
+    // );
+
+    // app.use(
+    //     ["/api", "/*"],
+    //     createProxyMiddleware({
+    //         target: "http://localhost:5000",
+    //     })
+    // );
+      */
+        
 };
 
 /*
@@ -24,4 +44,31 @@ Do not have CORS issues in this case as client and sever hosted at same heroku d
 
 Full oAuth (in development) flow diagram in v63 @17:00
 Full oAuth (in production) flow diagram in v63 @25:00
+
+// Side Note
+
+When code was written in format below: 
+    upon npm run dev I would be redirected to localhost: 3000 as per normal but root directory (Welcome to the Home page) will be served from the backend instead of the react content or App.js. 
+
+    The way the middleware is set up now (above) seems to be behaving in the fashion it should. I'm not entirely sure why this happens but the results are working as per normal. 
+
+
+
+module.exports = function (app) { // Side Note Below
+    app.use(
+        ["/api", "/auth/google"],
+        createProxyMiddleware({
+            target: "http://localhost:5000",
+        })
+    );
+
+    app.use(
+        ["/api", "/*"],
+        createProxyMiddleware({
+            target: "http://localhost:5000",
+        })
+    );
+};
+        
+
 */

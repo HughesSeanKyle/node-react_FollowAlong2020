@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React, {Component} from 'react'; 
 import { BrowserRouter, Route } from 'react-router-dom'; //1
 
 import Header from './Header';
@@ -8,19 +8,25 @@ const SurveyNew = () => <h2>SurveyNew</h2>
 const Landing = () => <h2>Landing</h2> 
 
 
-const App = () => { //2
-    return (
-        <div className="container"> 
-            <BrowserRouter>
-                <div>
-                    <Header />
-                    <Route exact path="/" component={Landing} />
-                    <Route exact path="/surveys" component={Dashboard} />
-                    <Route path="/surveys/new" component={SurveyNew} />
-                </div>
-            </BrowserRouter>
-        </div>
-    );
+class App extends Component { //2
+    componentDidMount() {
+
+    }
+    
+    render() {
+        return (
+            <div className="container"> 
+                <BrowserRouter>
+                    <div>
+                        <Header />
+                        <Route exact path="/" component={Landing} />
+                        <Route exact path="/surveys" component={Dashboard} />
+                        <Route path="/surveys/new" component={SurveyNew} />
+                    </div>
+                </BrowserRouter>
+            </div>
+        );
+    };
 };
 
 export default App; 
