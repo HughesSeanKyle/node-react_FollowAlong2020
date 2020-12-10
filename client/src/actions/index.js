@@ -2,12 +2,11 @@ import axios from 'axios';
 import { FETCH_USER } from './types';
 
 //1
-export const fetchUser = () => {
-    return function (dispatch) {
-        axios.get('./api/current_user')
-            .then(res => dispatch({ type: FETCH_USER, payload: res }))
+export const fetchUser = () => async dispatch => {
+        const res = await axios.get('./api/current_user')
+            
+        dispatch({ type: FETCH_USER, payload: res })
     };
-}; 
 
 /*
 NOTE
@@ -20,4 +19,6 @@ Ideally this function should be dispatched after the get request has been fullfi
 Summary of fetchUser function
 
     When ever action creator called (fetchUser) it will return a function. Redux-thunk will see that we returned a function and it will automatically call it with the dispatch. We then make our request, we wait till repsonse received from the API. Once we have response, only then will we dispatch the action. 
+
+//1 = Refactor done in V87
 */
