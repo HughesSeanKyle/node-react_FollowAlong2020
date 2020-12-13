@@ -10,7 +10,13 @@ module.exports = (app) => { //v30 - exporting func from this file
       })                                  //Google has more scope options
   );
   
-  app.get('/auth/google/callback', passport.authenticate('google'));//google string ID'd by GoogleStrategy.
+  app.get(
+      '/auth/google/callback',
+       passport.authenticate('google'),
+       (req, res) => {
+            res.redirect('/surveys');
+       }
+);//google string ID'd by GoogleStrategy.
 
   app.get('/api/logout', (req, res) => {
       req.logout();//attached by passport
