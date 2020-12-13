@@ -20,8 +20,7 @@ module.exports = (app) => { //v30 - exporting func from this file
 
   app.get('/api/logout', (req, res) => {
       req.logout();//attached by passport
-      res.send(req.user);//prove to user that they are logged out
-      //req.user will give blank screen - indicates user destroyed. 
+      res.redirect('/');
   });
 
 
