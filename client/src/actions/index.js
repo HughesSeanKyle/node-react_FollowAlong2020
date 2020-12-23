@@ -8,6 +8,12 @@ export const fetchUser = () => async dispatch => {
         dispatch({ type: FETCH_USER, payload: res.data })
     };
 
+export const handleToken = token => async dispatch => {
+    const res = await axios.post('/api/stripe', token);
+
+    dispatch({ type: FETCH_USER, payload: res.data }); // 2
+};
+
 /*
 NOTE
     This action creator fetches the user by creating a request to the server, the server then retrieves it from the data base. This request comes from localhost 3000 and fetches data on localhost 5000 that is why the proxy setup has to be made. 
@@ -30,4 +36,6 @@ Summary of fetchUser function
                 .then(res => dispatch({ type: FETCH_USER, payload: res })); 
         };
     };
+
+//2 - Update usermodel inside Auth reducer. 
 */
