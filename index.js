@@ -39,6 +39,8 @@ app.get('/', (req, res) => {
 // authRoutes(app); ref v30
 require('./routes/authRoutes')(app);
   //require stmt above returns a function (authRoutes.js) v30
+require('./routes/billingRoutes')(app);
+  // Above basically saying require this route then execute the function that it exports. 
 
 const PORT = process.env.PORT || 5000 //V12 04:45
 //vid 10 06:44
