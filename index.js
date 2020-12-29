@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser'); // 1
 const keys = require('./config/keys');
 
   // const authRoutes = require('.routes/authRoutes'); refactor v30
@@ -18,6 +19,7 @@ mongoose.connect(keys.mongoURI, {
 
 const app = express();
 
+app.use(bodyParser.json());
 //maxAge - How long cookie can exist in browser in ms not s
 //keys - Used to encrypt cookie
 app.use(
@@ -49,3 +51,7 @@ app.listen(PORT, () => console.log('Connected to Server...'))
 
 
 //ref === refactor
+
+/*
+// 1 - This is an express middleware - express middlewares are wired up to express by the app.use call
+*/
