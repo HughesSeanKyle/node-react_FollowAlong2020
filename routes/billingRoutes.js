@@ -3,7 +3,7 @@ const stripe = require('stripe')(keys.stripeSecretKey);
 
 module.exports = app => {
     app.post('/api/stripe', (req, res) => {
-        // Stripe Token ends up here 
+        console.log(req.body);
     });
 };
 
