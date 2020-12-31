@@ -1,14 +1,9 @@
 const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
+const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = app => {
-    app.post('/api/stripe', async (req, res) => {
-        // Naive approach to checking if user logged in
-        // The check below only applies to this.route
-        if (!req.user) {
-            // Set 401 error(Unauthorized or forbidden)
-            return res.status(401).send({ error: 'You must log in' })
-        }
+    app.post('/api/stripe', requireLogin, async (req, res) => { //3
         const charge = await stripe.charges.create({
             amount: 500,
             currency: 'usd',
@@ -35,5 +30,9 @@ the 'user' keyword will be undefined if client is not logged in.
 this maintains an up to date copy of user model
 They are however to separate objects in memory
 This represents the same user but this will be the copy that get returned from the save 
+
+// 3
+app.post('/api/stripe', requireLogin, async (req, res)
+Anytime somebody makes a request to this route (done with express server) [2nd arg] - Here  is a reference to this function (requireLogin) to run whenever this request comes in. 
  */
 
