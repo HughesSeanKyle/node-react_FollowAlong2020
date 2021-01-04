@@ -44,14 +44,34 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
   // Above basically saying require this route then execute the function that it exports. 
 
-const PORT = process.env.PORT || 5000 //V12 04:45
-//vid 10 06:44
-app.listen(PORT, () => console.log('Connected to Server...'))
-
-
-
-//ref === refactor
-
-/*
-// 1 - This is an express middleware - express middlewares are wired up to express by the app.use call
-*/
+  if (process.env.NODE_ENV === 'production') {  // 2
+    // Express will serve up production assets
+    // like our main.js file, or main.css file
+    app.use(express.static('client/build'));
+  
+    // Express will serve up the index.html file
+    // if it does not recognize the route
+    // 2.1 
+    const path = require('path');
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    });
+  }
+  
+  const PORT = process.env.PORT || 5000 //V12 04:45
+  //vid 10 06:44
+  app.listen(PORT, () => console.log('Connected to Server...'))
+  
+  
+  
+  //ref === refactor
+  
+  /*
+  // 1 - This is an express middleware - express middlewares are wired up to express by the app.use call
+  
+  // 2 
+  Note order of operations
+  // 2.1
+  Section of code says:
+  If we have Nothing inside of authRoutes, billingRoutes files and there is no file inside of client/build directory that matches up with what request is looking for then serve up index.html file. 
+  */
