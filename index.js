@@ -31,9 +31,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', (req, res) => {
-  res.send("Welcome to home page!")
-})
+// Commented below out as when commited to heroku this page is rendered instead of React-router Root page. 
+
+// app.get('/', (req, res) => {
+//   res.send("Welcome to home page!")
+// })
 
 //we need to use express in order to use routes v30
   //authRoutes becomes a function that takes in app as an Arg
