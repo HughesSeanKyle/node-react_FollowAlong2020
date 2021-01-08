@@ -8,6 +8,7 @@ const keys = require('./config/keys');
 
   // const authRoutes = require('.routes/authRoutes'); refactor v30
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 
