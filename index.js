@@ -46,6 +46,7 @@ require('./routes/authRoutes')(app);
   //require stmt above returns a function (authRoutes.js) v30
 require('./routes/billingRoutes')(app);
   // Above basically saying require this route then execute the function that it exports. 
+require('./routes/surveyRoutes')(app); // 3
 
   if (process.env.NODE_ENV === 'production') {  // 2
     // Express will serve up production assets
@@ -77,4 +78,9 @@ require('./routes/billingRoutes')(app);
   // 2.1
   Section of code says:
   If we have Nothing inside of authRoutes, billingRoutes files and there is no file inside of client/build directory that matches up with what request is looking for then serve up index.html file. 
+
+  // 3
+  recap
+  We are requiring in the route function and then we immediately calle the route function with the app object. 
+  
   */
