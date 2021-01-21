@@ -7,6 +7,8 @@ class Mailer extends helper.Mail { // 1
 
 }
 
+module.exports = Mailer;
+
 
 
 
