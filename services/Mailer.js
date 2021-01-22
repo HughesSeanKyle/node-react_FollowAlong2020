@@ -11,7 +11,25 @@ class Mailer extends helper.Mail { // 1.1
         this.subject = subject;
         this.body = new helper.Content('text/html', content);
         this.recipients = this.formatAddresses(recipients);
+
+        this.addContent(this.body);
+        this.addClickTracking();
+        this.addRecipients();
     }
+
+    formatAddresses(recipients) {
+        return recipients.map(({ email }) => {
+            return new helper.Email(email);
+        });
+    };
+
+    addClickTracking() {
+        const trackingSettings = new helper.TrackingSettings();
+        const clickTracking = new helper.ClickTracking(true, true);
+
+        trackingSettings.setClickTracking(clickTracking);
+        this.addTrackingSettings(trackingSettings);
+    };
 };
 
 module.exports = Mailer;
@@ -38,4 +56,7 @@ Makes sure that any constructor defined on the Mail class gets executed by calli
 
 // 1.4
 Whenever we make an instance of the mailer that instance will have a very specific from_email property. We assign this property to it by referencing 'this'. 
+
+// 1.5
+Must have () around { item } if you want to use destructuring with an arrow function. 
 */
