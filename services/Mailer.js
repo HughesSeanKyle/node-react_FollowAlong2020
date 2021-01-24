@@ -30,6 +30,14 @@ class Mailer extends helper.Mail { // 1.1
         trackingSettings.setClickTracking(clickTracking);
         this.addTrackingSettings(trackingSettings);
     };
+
+    addRecipients() {
+        const personalize = new helper.Personalization();
+        this.recipients.forEach(recipient => {
+            personalize.addTo(recipient); // 1.6
+        });
+        this.addPersonalization(personalize);
+    }
 };
 
 module.exports = Mailer;
@@ -59,4 +67,9 @@ Whenever we make an instance of the mailer that instance will have a very specif
 
 // 1.5
 Must have () around { item } if you want to use destructuring with an arrow function. 
+
+// 1.6
+This is added to the personalize OBJECT. You are creating an object instance from Personalization object class using the new keyword. 
+
+
 */
